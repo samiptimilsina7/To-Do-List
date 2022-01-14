@@ -39,15 +39,16 @@ function addtask(){
 }
 
 function display(){
+    document.querySelector(".boxes").innerHTML=''
     task.forEach((item)=>{
-        document.querySelector(".right-section").innerHTML=
+        document.querySelector(".boxes").innerHTML+=
         `<div class="box">
             <h1>Task ${item.tasknumber}</h1>
             <h3>${item.title}</h3>
             <p>${item.description}</p>
             <div class="buttons">
                 <button class="button">Edit</button>
-                <button class="button">Delete</button>
+                <button class="button" onclick="delete()">Delete</button>
             </div>
         </div>
         `
