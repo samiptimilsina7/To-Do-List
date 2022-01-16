@@ -13,6 +13,10 @@
             <h3>Add Task</h3>
             <form action="#">
                 <div class="input-section">
+                    <label for="task-number"><p>Task Number</p></label>
+                    <input type="text" id="task-number" placeholder="Enter task number">
+                </div>
+                <div class="input-section">
                     <label for="title"><p>Title</p></label>
                     <input type="text" id="title" placeholder="Enter title">
                 </div>
@@ -22,6 +26,7 @@
                 </div>
             </form>
             <button class="button" onclick="addtask()">Add Task</button>
+            <button class="button" onclick="donetask()">Save Task</button>
         </div>
         <div class="right-section">
             <div class="boxes">

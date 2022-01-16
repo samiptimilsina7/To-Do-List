@@ -30,6 +30,9 @@
 let task=[]
 let titleEL=''
 let descriptionEL=''
+document.querySelectorAll(".button")[0].style.display="block";
+document.querySelectorAll(".button")[1].style.display="none";
+document.querySelectorAll(".input-section")[0].style.display="none";
 
 function addtask(){
     titleEL=document.querySelector(".input-section input").value;
@@ -47,12 +50,21 @@ function display(){
             <h3>${item.title}</h3>
             <p>${item.description}</p>
             <div class="buttons">
-                <button class="button">Edit</button>
-                <button class="button" onclick="delete()">Delete</button>
+                <button class="button" onclick="edittask(${item.tasknumber})">Edit</button>
+                <button class="button" onclick="deletetask(${item.tasknumber})">Delete</button>
             </div>
         </div>
         `
     })
-    // displayTask=``
-    // document.querySelector(".box").innerHTML=displayTask
 }
+
+function deletetask(tasknumber){
+    task=task.filter(item=>item.tasknumber!==tasknumber) 
+    display();
+    }
+
+function edittask(tasknumber){
+    document.querySelectorAll(".button")[0].style.display="none";
+    document.querySelectorAll(".button")[1].style.display="block";
+    document.querySelectorAll(".input-section")[0].style.display="block";    
+    }
