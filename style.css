@@ -79,4 +79,11 @@ form{
     height: 200px;
     margin-bottom: 10px;
     border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.box p{
+    height: 75px;
 }

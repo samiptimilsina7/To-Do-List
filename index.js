@@ -30,13 +30,16 @@
 let task=[]
 let titleEL=''
 let descriptionEL=''
+let tasknumberEl=0
+
 document.querySelectorAll(".button")[0].style.display="block";
 document.querySelectorAll(".button")[1].style.display="none";
-document.querySelectorAll(".input-section")[0].style.display="none";
+// document.getElementById("task-number-section").style.display="none";
+document.querySelector("#task-number-section").style.display="none";
 
 function addtask(){
-    titleEL=document.querySelector(".input-section input").value;
-    descriptionEL=document.querySelectorAll(".input-section input")[1].value;
+    titleEL=document.querySelector(".input-section #title").value;
+    descriptionEL=document.querySelector(".input-section #description").value;
     task.push({tasknumber:task.length+1,title:titleEL,description:descriptionEL})
     display();
 }
@@ -66,5 +69,41 @@ function deletetask(tasknumber){
 function edittask(tasknumber){
     document.querySelectorAll(".button")[0].style.display="none";
     document.querySelectorAll(".button")[1].style.display="block";
-    document.querySelectorAll(".input-section")[0].style.display="block";    
-    }
+    // document.getElementById("task-number-section").style.display="block";
+    document.querySelector("#task-number-section").style.display="block";
+
+    var filtered=task.filter((item)=>{
+        if (item.tasknumber==tasknumber){
+            console.log(item.title)
+            document.querySelector(".input-section #title").value=item.title;
+            document.querySelector(".input-section #description").value=item.description;
+            document.getElementById("task-number-section").value=item.tasknumber
+            document.querySelector(".input-section #task-number").value=item.tasknumber;
+        }
+    })
+}
+
+
+function savetask(){
+    document.querySelectorAll(".button")[0].style.display="block";
+    document.querySelectorAll(".button")[1].style.display="none";
+    document.querySelector("#task-number-section").style.display="none";
+
+    titleEL=document.querySelector(".input-section #title").value;
+    descriptionEL=document.querySelector(".input-section #description").value;
+    tasknumberEl=document.querySelector(".input-section #task-number").value;
+    console.log(titleEL,descriptionEL,tasknumberEl)
+
+
+    task.map((item)=>{
+        console.log(item)
+        task.map((list)=>{
+            if (list.tasknumber==tasknumberEl) {
+                (list.title=titleEL),(list.description=descriptionEL);                
+            }
+        })
+    })
+    display();
+}
+
+
